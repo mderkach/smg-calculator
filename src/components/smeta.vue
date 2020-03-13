@@ -85,7 +85,14 @@
           <p class="calc-smeta-agreement">
             Нажав на кнопку, Вы даете согласие на обработку Персональных данных
           </p>
-          <input type="submit" class="calc-smeta-submit" />
+          <input
+            type="submit"
+            class="calc-smeta-submit"
+            :class="{
+              active:
+                (progress === 4 && siteType === 'landing') || progress === 5
+            }"
+          />
         </form>
       </div>
     </div>
@@ -93,7 +100,7 @@
 </template>
 
 <script>
-import { mapState } from "vuex";
+import { mapState, mapGetters } from "vuex";
 import { required } from "vuelidate/lib/validators";
 
 export default {
@@ -117,7 +124,6 @@ export default {
   },
   computed: {
     ...mapState([
-      "progress",
       "basePrice",
       "totalPrice",
       "sitePrice",
@@ -127,6 +133,7 @@ export default {
       "paramsPrice",
       "functionsPrice"
     ]),
+    ...mapGetters(["progress"]),
     calculate() {
       return (
         this.basePrice +
@@ -372,6 +379,18 @@ span {
       line-height: 19px;
       text-align: center;
       color: #35659a;
+      pointer-events: none;
+
+      &:hover {
+        cursor: pointer;
+      }
+
+      &.active {
+        border: 2px solid #f42d57;
+        background: #f42d57;
+        color: #ffffff;
+        pointer-events: all;
+      }
     }
   }
 }

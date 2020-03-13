@@ -3,13 +3,22 @@
     <slot></slot>
     <custom-input :items="inputs" v-if="inputs" />
     <checkboxes :checkbox="checkbox" v-if="checkbox" />
-    <button
-      class="calc-next"
-      @click="increaseProgress(progress)"
-      :disabled="siteType === 'landing' ? progress === 4 : progress === 5"
-    >
-      Далее
-    </button>
+    <div class="calc-step-pane-row">
+      <button
+        class="calc-next"
+        @click="decreaseProgress(progress)"
+        :disabled="progress === 1"
+      >
+        Назад
+      </button>
+      <button
+        class="calc-next"
+        @click="increaseProgress(progress)"
+        :disabled="siteType === 'landing' ? progress === 4 : progress === 5"
+      >
+        Далее
+      </button>
+    </div>
   </div>
 </template>
 
@@ -37,6 +46,11 @@ export default {
       this.$store.commit("update_progress", ++progress);
       this.$store.commit("increase_step", progress);
       this.$store.commit("set_selected", undefined);
+    },
+    decreaseProgress(progress) {
+      this.$store.commit("update_progress", --progress);
+      this.$store.commit("decrease_step", 1);
+      this.$store.commit("set_selected", undefined);
     }
   },
   computed: {
@@ -60,6 +74,11 @@ export default {
         line-height: 49px;
         color: #000000;
       }
+
+      &-row {
+        display: flex;
+        justify-content: center;
+      }
     }
   }
 
@@ -67,7 +86,7 @@ export default {
     display: block;
     width: 100%;
     max-width: 210px;
-    margin: 0 auto;
+    margin: 0 10px;
     padding: 16px 52px;
     background: #ffffff;
     border: 2px solid #35659a;
