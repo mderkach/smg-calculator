@@ -78,6 +78,10 @@ export default {
       &-row {
         display: flex;
         justify-content: center;
+
+        @media #{map-get($display-breakpoints, 'md-and-down')} {
+          flex-wrap: wrap;
+        }
       }
     }
   }
@@ -101,6 +105,10 @@ export default {
 
     &:disabled {
       opacity: 0.5;
+    }
+
+    @media #{map-get($display-breakpoints, 'md-and-down')} {
+      margin-bottom: 5px;
     }
   }
 }

@@ -52,6 +52,11 @@ export default {
       margin-bottom: 10px;
     }
 
+    @media #{map-get($display-breakpoints, 'md-and-down')} {
+      width: 100px;
+      height: 45px;
+    }
+
     &:hover {
       cursor: pointer;
     }
@@ -79,6 +84,11 @@ export default {
       text-align: center;
       color: #fff;
       transform: skew(20deg);
+
+      @media #{map-get($display-breakpoints, 'md-and-down')} {
+        font-size: 16px;
+        line-height: 16px;
+      }
     }
   }
 }

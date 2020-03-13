@@ -1,7 +1,7 @@
 <template>
   <div class="calc-checboxes-wrapper">
-    <div class="calc-checboxes" v-for="(item, index) in checkbox" :key="index">
-      <h5 class="calc-checboxes-header">{{ item.name }}</h5>
+    <div class="calc-checkboxes" v-for="(item, index) in checkbox" :key="index">
+      <h5 class="calc-checkboxes-header">{{ item.name }}</h5>
       <div class="calc-checkboxes-list">
         <div class="calc-checkboxes-wrapper">
           <label
@@ -68,6 +68,13 @@ export default {
 
 .calc {
   &-checkboxes {
+    &-header {
+      font-style: normal;
+      font-weight: bold;
+      font-size: 24px;
+      line-height: 165%;
+    }
+
     &-wrapper {
       display: flex;
       flex-wrap: wrap;
