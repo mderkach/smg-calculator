@@ -1,9 +1,15 @@
 <template>
-  <div class="calc-checboxes-wrapper">
-    <div class="calc-checkboxes" v-for="(item, index) in checkbox" :key="index">
-      <h5 class="calc-checkboxes-header">{{ item.name }}</h5>
-      <div class="calc-checkboxes-list">
-        <div class="calc-checkboxes-wrapper">
+  <div class="calc-checkboxes-wrapper">
+    <v-expansion-panels multiple accordion>
+      <v-expansion-panel
+        class="calc-checkboxes-list"
+        v-for="(item, index) in checkbox"
+        :key="index"
+      >
+        <v-expansion-panel-header class="calc-checkboxes-header">
+          {{ item.name }}
+        </v-expansion-panel-header>
+        <v-expansion-panel-content class="calc-checkboxes">
           <label
             class="calc-checkboxes-item"
             v-for="(item, index) in item.items"
@@ -26,9 +32,9 @@
               + {{ item.price }} <span>₽</span>
             </p>
           </label>
-        </div>
-      </div>
-    </div>
+        </v-expansion-panel-content>
+      </v-expansion-panel>
+    </v-expansion-panels>
   </div>
 </template>
 
@@ -65,7 +71,11 @@ export default {
 
 <style lang="scss">
 @import "~vuetify/src/styles/settings/_variables";
-
+.v-expansion-panel-content__wrap {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
 .calc {
   &-checkboxes {
     &-header {
@@ -79,6 +89,7 @@ export default {
       display: flex;
       flex-wrap: wrap;
       justify-content: space-between;
+      margin-bottom: 20px;
     }
 
     &-item {

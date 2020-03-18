@@ -4,7 +4,6 @@
       v-for="(input, index) in items"
       :key="index"
       class="calc-input"
-      :style="'flex-basis: calc(100%/' + items.length + ' - 13px)'"
       :class="input.inputType === 'radio' ? '' : '--checkbox'"
     >
       <label
@@ -102,6 +101,7 @@ export default {
     display: flex;
     flex-grow: 0;
     flex-shrink: 1;
+    width: 32%;
     margin-right: 13px;
     margin-bottom: 13px;
     box-sizing: border-box;
