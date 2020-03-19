@@ -100,7 +100,7 @@
 </template>
 
 <script>
-import { mapState, mapGetters } from "vuex";
+import { mapGetters } from "vuex";
 import { required } from "vuelidate/lib/validators";
 
 export default {
@@ -123,7 +123,8 @@ export default {
     }
   },
   computed: {
-    ...mapState([
+    ...mapGetters([
+      "progress",
       "basePrice",
       "totalPrice",
       "sitePrice",
@@ -133,7 +134,6 @@ export default {
       "paramsPrice",
       "functionsPrice"
     ]),
-    ...mapGetters(["progress"]),
     calculate() {
       return (
         this.basePrice +

@@ -16,6 +16,12 @@ export default {
   sitePrice: state => {
     return state.sitePrice;
   },
+  paramsPrice: state => {
+    return state.paramsPrice;
+  },
+  functionsPrice: state => {
+    return state.functionsPrice;
+  },
   cmsPrice: state => {
     return state.cmsPrice;
   },
@@ -24,6 +30,9 @@ export default {
   },
   sites: state => {
     return state.sites;
+  },
+  siteType: state => {
+    return state.siteType;
   },
   cms: state => {
     return state.cms;

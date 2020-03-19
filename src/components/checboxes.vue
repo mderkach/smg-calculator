@@ -1,6 +1,6 @@
 <template>
   <div class="calc-checkboxes-wrapper">
-    <v-expansion-panels multiple accordion>
+    <v-expansion-panels multiple accordion :value="opened">
       <v-expansion-panel
         class="calc-checkboxes-list"
         v-for="(item, index) in checkbox"
@@ -49,6 +49,9 @@ export default {
       default: () => []
     }
   },
+  data: () => ({
+    opened: [0]
+  }),
   methods: {
     ...mapMutations(["set_functionsPrice", "updateTotalPrice"]),
     calcCheckbox(input) {

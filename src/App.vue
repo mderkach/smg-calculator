@@ -158,6 +158,32 @@
                   </template>
                 </step-pane>
                 <step-pane
+                  :checkbox="functionsStore"
+                  v-else-if="
+                    progress === 4 &&
+                      siteType !== 'landing' &&
+                      siteType === 'store'
+                  "
+                >
+                  <template v-slot>
+                    <p class="calc-step-pane-header">
+                      Функционал:
+                    </p>
+                    <p class="calc-descr">
+                      Lorem ipsum dolor sit amet, consectetur adipiscing elit. A
+                      volutpat nunc donec diam tempus ornare praesent. Quis
+                      tincidunt posuere quam ac. Consectetur hendrerit at
+                      ullamcorper ullamcorper amet aenean sed accumsan quis.
+                      Fermentum ultricies augue urna, magnis commodo, orci. In
+                      ac pellentesque diam elementum nunc. Sed diam diam
+                      suscipit vitae aliquet tincidunt arcu morbi sociis. Nullam
+                      bibendum euismod venenatis dignissim scelerisque amet
+                      malesuada viverra. Dignissim velit sed gravida aliquam
+                      etiam scelerisque in quis.
+                    </p>
+                  </template>
+                </step-pane>
+                <step-pane
                   :checkbox="functions"
                   v-else-if="progress === 4 && siteType !== 'landing'"
                 >
@@ -243,7 +269,8 @@ export default {
       "paramsLanding",
       "functions",
       "functionsVisit",
-      "functionsShowcase"
+      "functionsShowcase",
+      "functionsStore"
     ])
   }
 };
