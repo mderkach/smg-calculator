@@ -35,5 +35,8 @@ export default {
   },
   set_functionsPrice: (state, payload) => {
     state.functionsPrice = payload;
+  },
+  set_pagesPrice: (state, payload) => {
+    state.pagesPrice = payload;
   }
 };

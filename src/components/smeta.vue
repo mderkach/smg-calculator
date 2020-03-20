@@ -11,35 +11,57 @@
           <p class="calc-smeta-descr mb-3">Проектирование</p>
           <p class="calc-smeta-price mb-3">{{ sitePrice }} <span>₽</span></p>
         </div>
-        <div class="calc-smeta-row" :class="progress >= 2 ? 'active' : ''">
-          <p class="calc-smeta-descr mb-3">Система управления сайтом</p>
-          <p class="calc-smeta-price mb-3">{{ cmsPrice }} <span>₽</span></p>
+        <div v-if="siteType === 'landing'">
+          <div class="calc-smeta-row" :class="progress >= 2 ? 'active' : ''">
+            <p class="calc-smeta-descr mb-3">Система управления сайтом</p>
+            <p class="calc-smeta-price mb-3">{{ cmsPrice }} <span>₽</span></p>
+          </div>
+          <div class="calc-smeta-row" :class="progress >= 3 ? 'active' : ''">
+            <p class="calc-smeta-descr mb-3">Дизайн и верстка</p>
+            <p class="calc-smeta-price mb-3">
+              {{ designPrice }} <span>₽</span>
+            </p>
+          </div>
+          <div class="calc-smeta-row" :class="progress >= 4 ? 'active' : ''">
+            <p class="calc-smeta-descr mb-3">
+              Дополнительные опции
+            </p>
+            <p class="calc-smeta-price mb-3">
+              {{ paramsPrice + pagesPrice }}
+              <span>₽</span>
+            </p>
+          </div>
         </div>
-        <div class="calc-smeta-row" :class="progress >= 3 ? 'active' : ''">
-          <p class="calc-smeta-descr mb-3">Дизайн и верстка</p>
-          <p class="calc-smeta-price mb-3">{{ designPrice }} <span>₽</span></p>
-        </div>
-        <div
-          class="calc-smeta-row"
-          :class="progress >= 4 && siteType !== 'landing' ? 'active' : ''"
-        >
-          <p class="calc-smeta-descr mb-3">Функционал</p>
-          <p class="calc-smeta-price mb-3">
-            {{ functionsPrice }}
-            <span>₽</span>
-          </p>
-        </div>
-        <div
-          class="calc-smeta-row"
-          :class="progress >= 4 && siteType === 'landing' ? 'active' : ''"
-        >
-          <p class="calc-smeta-descr mb-3">
-            Дополнительные опции
-          </p>
-          <p class="calc-smeta-price mb-3">
-            {{ paramsPrice }}
-            <span>₽</span>
-          </p>
+        <div v-else>
+          <div class="calc-smeta-row" :class="progress >= 3 ? 'active' : ''">
+            <p class="calc-smeta-descr mb-3">Система управления сайтом</p>
+            <p class="calc-smeta-price mb-3">{{ cmsPrice }} <span>₽</span></p>
+          </div>
+          <div class="calc-smeta-row" :class="progress >= 4 ? 'active' : ''">
+            <p class="calc-smeta-descr mb-3">Дизайн и верстка</p>
+            <p class="calc-smeta-price mb-3">
+              {{ designPrice }} <span>₽</span>
+            </p>
+          </div>
+          <div class="calc-smeta-row" :class="progress >= 5 ? 'active' : ''">
+            <p class="calc-smeta-descr mb-3">Функционал</p>
+            <p class="calc-smeta-price mb-3">
+              {{ functionsPrice }}
+              <span>₽</span>
+            </p>
+          </div>
+          <div
+            class="calc-smeta-row"
+            :class="progress >= 6 || progress === 2 ? 'active' : ''"
+          >
+            <p class="calc-smeta-descr mb-3">
+              Дополнительные опции
+            </p>
+            <p class="calc-smeta-price mb-3">
+              {{ paramsPrice + pagesPrice }}
+              <span>₽</span>
+            </p>
+          </div>
         </div>
         <div class="calc-smeta-total-wrapper">
           <p class="calc-smeta-total-descr my-0">
@@ -90,7 +112,7 @@
             class="calc-smeta-submit"
             :class="{
               active:
-                (progress === 4 && siteType === 'landing') || progress === 5
+                (progress === 4 && siteType === 'landing') || progress === 6
             }"
           />
         </form>
@@ -132,7 +154,8 @@ export default {
       "cmsPrice",
       "designPrice",
       "paramsPrice",
-      "functionsPrice"
+      "functionsPrice",
+      "pagesPrice"
     ]),
     calculate() {
       return (
@@ -141,7 +164,8 @@ export default {
         this.cmsPrice +
         this.designPrice +
         this.paramsPrice +
-        this.functionsPrice
+        this.functionsPrice +
+        this.pagesPrice
       );
     }
   },

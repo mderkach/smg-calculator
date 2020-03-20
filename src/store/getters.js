@@ -28,6 +28,9 @@ export default {
   designPrice: state => {
     return state.designPrice;
   },
+  pagesPrice: state => {
+    return state.pagesPrice;
+  },
   sites: state => {
     return state.sites;
   },

@@ -14,7 +14,7 @@
       <button
         class="calc-next"
         @click="increaseProgress(progress)"
-        :disabled="siteType === 'landing' ? progress === 4 : progress === 5"
+        :disabled="siteType === 'landing' ? progress === 4 : progress === 6"
       >
         Далее
       </button>
