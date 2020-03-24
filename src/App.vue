@@ -174,7 +174,7 @@
                           проектами и задачами;
                         </li>
                         <li>
-                          <strong>• Размещение сайта на хостинге </strong> — эта
+                          <strong>Размещение сайта на хостинге </strong> — эта
                           услуга позволяет вам на выходе получить полноценный
                           сайт, доступный для всех интернет-пользователей.
                         </li>
@@ -187,18 +187,6 @@
                     <template v-slot>
                       <p class="calc-step-pane-header">
                         Выберите кол-во страниц:
-                      </p>
-                      <p class="calc-descr">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                        A volutpat nunc donec diam tempus ornare praesent. Quis
-                        tincidunt posuere quam ac. Consectetur hendrerit at
-                        ullamcorper ullamcorper amet aenean sed accumsan quis.
-                        Fermentum ultricies augue urna, magnis commodo, orci. In
-                        ac pellentesque diam elementum nunc. Sed diam diam
-                        suscipit vitae aliquet tincidunt arcu morbi sociis.
-                        Nullam bibendum euismod venenatis dignissim scelerisque
-                        amet malesuada viverra. Dignissim velit sed gravida
-                        aliquam etiam scelerisque in quis.
                       </p>
                     </template>
                   </step-pane>
@@ -403,7 +391,7 @@
                           проектами и задачами;
                         </li>
                         <li>
-                          <strong>• Размещение сайта на хостинге </strong> — эта
+                          <strong>Размещение сайта на хостинге </strong> — эта
                           услуга позволяет вам на выходе получить полноценный
                           сайт, доступный для всех интернет-пользователей.
                         </li>
@@ -508,12 +496,13 @@ export default {
     margin-bottom: 20px;
     font-style: normal;
     font-weight: normal;
-    font-size: 18px;
+    font-size: 16px;
     line-height: 165%;
   }
 }
 
 li {
+  font-size: 14px;
   margin-bottom: 16px;
 }
 </style>

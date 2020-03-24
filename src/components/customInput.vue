@@ -110,6 +110,14 @@ export default {
       margin-right: 0;
     }
 
+    @media #{map-get($display-breakpoints, 'lg-and-down')} {
+      width: 30%;
+    }
+
+    @media #{map-get($display-breakpoints, 'md-and-down')} {
+      width: 32%;
+    }
+
     &.--checkbox {
       flex-basis: calc(33.3333% - 13px) !important;
 
@@ -165,7 +173,7 @@ export default {
       margin-top: 20px;
 
       @media #{map-get($display-breakpoints, 'md-and-down')} {
-        justify-content: center;
+        justify-content: space-between;
       }
     }
 

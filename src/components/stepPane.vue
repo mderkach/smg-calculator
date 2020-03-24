@@ -67,11 +67,11 @@ export default {
       max-width: 1165px;
 
       &-header {
-        margin: 40px 0 10px;
+        margin: 20px 0 10px;
         font-style: normal;
         font-weight: bold;
-        font-size: 36px;
-        line-height: 49px;
+        font-size: 28px;
+        line-height: 40px;
         color: #000000;
       }
 
