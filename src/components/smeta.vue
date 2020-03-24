@@ -278,6 +278,10 @@ span {
     &-descr {
       font-family: Avenir;
 
+      @media #{map-get($display-breakpoints, 'lg-and-down')} {
+        font-size: 14px;
+      }
+
       @media #{map-get($display-breakpoints, 'md-and-down')} {
         flex-basis: 100%;
       }
@@ -287,6 +291,10 @@ span {
       font-family: AvenirBold;
       font-size: 18px;
       line-height: 22px;
+
+      @media #{map-get($display-breakpoints, 'lg-and-down')} {
+        font-size: 14px;
+      }
 
       @media #{map-get($display-breakpoints, 'md-and-down')} {
         flex-basis: 100%;

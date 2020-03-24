@@ -108,6 +108,10 @@ export default {
 
     &:nth-last-child(1) {
       margin-right: 0;
+
+      @media #{map-get($display-breakpoints, 'md-and-down')} {
+        margin-right: 13px;
+      }
     }
 
     @media #{map-get($display-breakpoints, 'lg-and-down')} {
@@ -115,7 +119,12 @@ export default {
     }
 
     @media #{map-get($display-breakpoints, 'md-and-down')} {
-      width: 32%;
+      width: 31%;
+    }
+
+    @media #{map-get($display-breakpoints, 'sm-and-down')} {
+      width: 100%;
+      margin-right: 0;
     }
 
     &.--checkbox {
@@ -173,7 +182,7 @@ export default {
       margin-top: 20px;
 
       @media #{map-get($display-breakpoints, 'md-and-down')} {
-        justify-content: space-between;
+        justify-content: center;
       }
     }
 

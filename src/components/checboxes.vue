@@ -74,11 +74,13 @@ export default {
 
 <style lang="scss">
 @import "~vuetify/src/styles/settings/_variables";
+
 .v-expansion-panel-content__wrap {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
 }
+
 .calc {
   &-checkboxes {
     &-header {
@@ -109,10 +111,18 @@ export default {
       box-sizing: border-box;
       border-radius: 5px;
 
+      @media #{map-get($display-breakpoints, 'lg-and-down')} {
+        padding: 10px;
+      }
+
       @media #{map-get($display-breakpoints, 'md-and-down')} {
         flex-basis: 100%;
         flex-wrap: wrap;
         justify-content: center;
+      }
+
+      @media only screen and (max-width: 500px) {
+        flex-direction: column;
       }
 
       &-descr {
@@ -123,8 +133,20 @@ export default {
         line-height: 125%;
         color: #282828;
 
+        @media #{map-get($display-breakpoints, 'lg-and-down')} {
+          font-size: 16px;
+        }
+
         @media #{map-get($display-breakpoints, 'md-and-down')} {
           flex-basis: 80%;
+        }
+
+        @media #{map-get($display-breakpoints, 'sm-and-down')} {
+          flex-basis: 70%;
+        }
+
+        @media only screen and (max-width: 500px) {
+          flex-basis: unset;
         }
       }
 
@@ -138,9 +160,17 @@ export default {
         line-height: 33px;
         color: #35659a;
 
+        @media #{map-get($display-breakpoints, 'lg-and-down')} {
+          font-size: 16px;
+        }
+
         @media #{map-get($display-breakpoints, 'sm-and-down')} {
           margin-top: 10px !important;
           margin-left: 0;
+        }
+
+        @media only screen and (max-width: 500px) {
+          margin: 0 auto;
         }
       }
 
@@ -160,6 +190,14 @@ export default {
         height: 24px;
         margin-right: 20px;
         background: #3d96f9;
+
+        @media #{map-get($display-breakpoints, 'lg-and-down')} {
+          margin-right: 10px;
+        }
+
+        @media only screen and (max-width: 500px) {
+          margin: 0 auto;
+        }
 
         &::after {
           display: block;
