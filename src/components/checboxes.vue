@@ -221,7 +221,7 @@ export default {
       &.active {
         border: 1px solid #35659a;
         box-sizing: border-box;
-        box-shadow: 0px 4px 25px rgba(61, 150, 249, 0.35);
+        box-shadow: 0px 4px 25px rgba(61, 150, 249, 0.95);
 
         & > .calc-checkboxes-item-checkbox {
           background: #f42d57;

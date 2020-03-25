@@ -27,10 +27,7 @@
         v-else
         class="calc-input-label"
         :for="input.type"
-        @click.prevent="
-          calcCheckbox(input);
-          $event.target.classList.toggle('active');
-        "
+        @click.prevent="calcCheckbox(input)"
       >
         <input
           :type="input.inputType"
@@ -76,6 +73,9 @@ export default {
       this.$store.commit("updateTotalPrice", input.price);
     },
     calcCheckbox(input) {
+      document
+        .querySelector("label[for=" + input.type + "]")
+        .classList.toggle("active");
       let priceToUpdate = this.paramsPrice;
       input.checked = !input.checked;
       if (input.checked === true) {
@@ -155,7 +155,7 @@ export default {
 
       &.active {
         border: 1px solid #35659a;
-        box-shadow: 0px 4px 25px rgba(61, 150, 249, 0.35);
+        box-shadow: 0px 4px 25px rgba(61, 150, 249, 0.95);
         border-radius: 5px;
       }
 

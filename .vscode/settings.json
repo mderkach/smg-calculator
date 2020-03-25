@@ -1,0 +1,10 @@
+{
+	"editor.formatOnSave": true,
+	"vetur.validation.template": true,
+	"editor.codeActionsOnSave": {
+		"source.fixAll.eslint": true
+	},
+	"javascript.format.enable": true,
+	"vetur.format.defaultFormatter.js": "prettier",
+	"vetur.format.defaultFormatter.html": "prettier"
+}
