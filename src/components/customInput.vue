@@ -10,14 +10,14 @@
         v-if="input.inputType === 'radio'"
         class="calc-input-label"
         :for="input.type"
+        :class="{ active: index === bindActiveClass(input) }"
         @click.prevent="calcRadio(input, index)"
-        :class="{ active: selected == index }"
       >
         <input
+          :id="input.type"
           :type="input.inputType"
           :value="input.price"
           :name="input.name"
-          :id="input.type"
         />
         <svg width="134" class="calc-icon" v-html="input.icon"></svg>
         <p class="calc-input-name">{{ input.label }}</p>
@@ -30,10 +30,10 @@
         @click.prevent="calcCheckbox(input)"
       >
         <input
+          :id="input.type"
           :type="input.inputType"
           :value="input.price"
           :name="input.name"
-          :id="input.type"
         />
         <svg width="134" class="calc-icon" v-html="input.icon"></svg>
         <p class="calc-input-name">{{ input.label }}</p>
@@ -54,10 +54,25 @@ export default {
       default: () => []
     }
   },
+  computed: {
+    ...mapState([
+      "totalPrice",
+      "paramsPrice",
+      "additionalsPrice",
+      "selected_site",
+      "selected_cms",
+      "selected_design",
+      "selected_pages"
+    ])
+  },
   methods: {
     ...mapMutations([
       "set_siteType",
       "set_selected",
+      "set_selected_site",
+      "set_selected_cms",
+      "set_selected_design",
+      "set_selected_pages",
       "set_sitePrice",
       "set_cmsPrice",
       "set_designPrice",
@@ -65,7 +80,7 @@ export default {
       "updateTotalPrice"
     ]),
     calcRadio(input, index) {
-      this.$store.commit("set_selected", index);
+      this.$store.commit("set_selected_" + input.name, index);
       if (input.name === "site") {
         this.$store.commit("set_siteType", input.type);
       }
@@ -85,10 +100,11 @@ export default {
         priceToUpdate -= input.price;
         this.$store.commit("set_" + input.name + "Price", priceToUpdate);
       }
+    },
+    bindActiveClass(input) {
+      let method = "selected_" + input.name;
+      return this[method];
     }
-  },
-  computed: {
-    ...mapState(["selected", "totalPrice", "paramsPrice", "additionalsPrice"])
   }
 };
 </script>

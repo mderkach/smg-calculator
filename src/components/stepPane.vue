@@ -41,20 +41,18 @@ export default {
     }
   },
   methods: {
-    ...mapMutations(["update_progress", "set_selected"]),
+    ...mapMutations(["update_progress"]),
     increaseProgress(progress) {
       this.$store.commit("update_progress", ++progress);
       this.$store.commit("increase_step", progress);
-      this.$store.commit("set_selected", undefined);
     },
     decreaseProgress(progress) {
       this.$store.commit("update_progress", --progress);
       this.$store.commit("decrease_step", 1);
-      this.$store.commit("set_selected", undefined);
     }
   },
   computed: {
-    ...mapState(["progress", "steps", "selected", "siteType"])
+    ...mapState(["progress", "steps", "siteType"])
   }
 };
 </script>

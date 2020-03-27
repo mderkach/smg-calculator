@@ -158,25 +158,14 @@ export default {
       "pagesPrice"
     ]),
     calculate() {
-      if (
-        this.sitePrice === 0 &&
-        this.cmsPrice === 0 &&
-        this.designPrice === 0 &&
-        this.paramsPrice === 0 &&
-        this.functionsPrice === 0 &&
-        this.pagesPrice === 0
-      ) {
-        return this.basePrice;
-      } else {
-        return (
-          this.sitePrice +
-          this.cmsPrice +
-          this.designPrice +
-          this.paramsPrice +
-          this.functionsPrice +
-          this.pagesPrice
-        );
-      }
+      return (
+        this.sitePrice +
+        this.cmsPrice +
+        this.designPrice +
+        this.paramsPrice +
+        this.functionsPrice +
+        this.pagesPrice
+      );
     }
   },
   methods: {
