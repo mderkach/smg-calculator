@@ -88,9 +88,6 @@ export default {
       this.$store.commit("updateTotalPrice", input.price);
     },
     calcCheckbox(input) {
-      document
-        .querySelector("label[for=" + input.type + "]")
-        .classList.toggle("active");
       let priceToUpdate = this.paramsPrice;
       input.checked = !input.checked;
       if (input.checked === true) {

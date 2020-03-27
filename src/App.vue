@@ -24,7 +24,7 @@
             <v-col cols="12" lg="8" offset-xl="1" offset="0">
               <div class="calc-panes">
                 <step />
-                <step-pane :inputs="sites" v-if="progress === 1">
+                <step-pane :inputs="sites" v-show="progress === 1">
                   <template v-slot>
                     <p class="calc-step-pane-header">Вам нужно:</p>
                     <p class="calc-descr">
@@ -65,8 +65,8 @@
                     </ul>
                   </template>
                 </step-pane>
-                <div v-if="siteType === 'landing'">
-                  <step-pane :inputs="cms" v-if="progress === 2">
+                <div v-show="siteType === 'landing'">
+                  <step-pane :inputs="cms" v-show="progress === 2">
                     <template v-slot>
                       <p class="calc-step-pane-header">Выберите CMS:</p>
                       <p class="calc-descr">
@@ -109,7 +109,7 @@
                       </ul>
                     </template>
                   </step-pane>
-                  <step-pane :inputs="designes" v-if="progress === 3">
+                  <step-pane :inputs="designes" v-show="progress === 3">
                     <template v-slot>
                       <p class="calc-step-pane-header">Вам нужен дизайн:</p>
                       <p class="calc-descr">
@@ -130,7 +130,7 @@
                       </p>
                     </template>
                   </step-pane>
-                  <step-pane :inputs="paramsLanding" v-if="progress === 4">
+                  <step-pane :inputs="paramsLanding" v-show="progress === 4">
                     <template v-slot>
                       <p class="calc-step-pane-header">
                         Дополнительные параметры:
@@ -182,15 +182,15 @@
                     </template>
                   </step-pane>
                 </div>
-                <div v-else>
-                  <step-pane :inputs="pages" v-if="progress === 2">
+                <div v-show="siteType !== 'landing'">
+                  <step-pane :inputs="pages" v-show="progress === 2">
                     <template v-slot>
                       <p class="calc-step-pane-header">
                         Выберите кол-во страниц:
                       </p>
                     </template>
                   </step-pane>
-                  <step-pane :inputs="cms" v-if="progress === 3">
+                  <step-pane :inputs="cms" v-show="progress === 3">
                     <template v-slot>
                       <p class="calc-step-pane-header">Выберите CMS:</p>
                       <p class="calc-descr">
@@ -233,7 +233,7 @@
                       </ul>
                     </template>
                   </step-pane>
-                  <step-pane :inputs="designes" v-if="progress === 4">
+                  <step-pane :inputs="designes" v-show="progress === 4">
                     <template v-slot>
                       <p class="calc-step-pane-header">Вам нужен дизайн:</p>
                       <p class="calc-descr">
@@ -256,7 +256,7 @@
                   </step-pane>
                   <step-pane
                     :checkbox="functionsVisit"
-                    v-if="progress === 5 && siteType === 'visit'"
+                    v-show="progress === 5 && siteType === 'visit'"
                   >
                     <template v-slot>
                       <p class="calc-step-pane-header">Функционал:</p>
@@ -280,7 +280,7 @@
                   </step-pane>
                   <step-pane
                     :checkbox="functionsShowcase"
-                    v-else-if="progress === 5 && siteType === 'showcase'"
+                    v-show="progress === 5 && siteType === 'showcase'"
                   >
                     <template v-slot>
                       <p class="calc-step-pane-header">Функционал:</p>
@@ -304,7 +304,7 @@
                   </step-pane>
                   <step-pane
                     :checkbox="functionsStore"
-                    v-else-if="progress === 5 && siteType === 'store'"
+                    v-show="progress === 5 && siteType === 'store'"
                   >
                     <template v-slot>
                       <p class="calc-step-pane-header">Функционал:</p>
@@ -326,7 +326,15 @@
                       </p>
                     </template>
                   </step-pane>
-                  <step-pane :checkbox="functions" v-else-if="progress === 5">
+                  <step-pane
+                    :checkbox="functions"
+                    v-show="
+                      progress === 5 &&
+                        siteType !== 'visit' &&
+                        siteType !== 'store' &&
+                        siteType !== 'showcase'
+                    "
+                  >
                     <template v-slot>
                       <p class="calc-step-pane-header">Функционал:</p>
                       <p class="calc-descr">
@@ -347,7 +355,7 @@
                       </p>
                     </template>
                   </step-pane>
-                  <step-pane :inputs="params" v-if="progress === 6">
+                  <step-pane :inputs="params" v-show="progress === 6">
                     <template v-slot>
                       <p class="calc-step-pane-header">
                         Дополнительные параметры:

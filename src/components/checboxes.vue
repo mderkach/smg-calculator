@@ -15,7 +15,7 @@
             v-for="(item, index) in item.items"
             :key="index"
             :for="item.type"
-            @click.prevent="calcCheckbox(item)"
+            @click.prevent="calcCheckbox(item, $event)"
           >
             <input
               class="calc-checkboxes-item-input"
@@ -51,10 +51,12 @@ export default {
   }),
   methods: {
     ...mapMutations(["set_functionsPrice", "updateTotalPrice"]),
-    calcCheckbox(input) {
-      document
-        .querySelector("label[for=" + input.type + "]")
-        .classList.toggle("active");
+    calcCheckbox(input, e) {
+      if (e.target.classList.contains("calc-checkboxes-item")) {
+        e.target.classList.toggle("active");
+      } else {
+        e.target.parentElement.classList.toggle("active");
+      }
       let priceToUpdate = this.functionsPrice;
       input.checked = !input.checked;
       if (input.checked === true) {
