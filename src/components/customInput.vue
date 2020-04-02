@@ -91,7 +91,6 @@ export default {
       let priceToUpdate = this.paramsPrice;
       if (event.target.classList.contains("calc-input-label")) {
         event.target.classList.toggle("active");
-        console.log(event.target.classList);
       } else {
         event.target.closest(".calc-input-label").classList.toggle("active");
       }

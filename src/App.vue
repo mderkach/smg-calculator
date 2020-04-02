@@ -6,7 +6,9 @@
           <v-row>
             <v-col cols="12" xl="8" offset-xl="2" offset="0" class="py-0">
               <div class="calc-header-wrapper">
-                <h2 class="calc-header">Калькулятор услуг</h2>
+                <h2 class="calc-header">
+                  Калькулятор услуг
+                </h2>
                 <p class="calc-descr">
                   Калькулятор позволяет выяснить стоимость разработки сайта, не
                   обращаясь для этого к нашему менеджеру: 5 несложных шагов и вы
@@ -66,7 +68,7 @@
                   </template>
                 </step-pane>
                 <div v-show="siteType === 'landing'">
-                  <step-pane :inputs="cms" v-show="progress === 2">
+                  <step-pane :inputs="filterCms" v-show="progress === 2">
                     <template v-slot>
                       <p class="calc-step-pane-header">Выберите CMS:</p>
                       <p class="calc-descr">
@@ -91,7 +93,7 @@
                           <b>одностраничники, блоги, сайты-витрины</b> и даже
                           <b>интернет-магазины</b>. Последние, правда, обычно
                           получаются с некоторым ограничением функционала.
-                          <b>Drupal или OpenCart.</b>
+                          <b>Drupal или opencart.</b>
                         </li>
                         <li>
                           <strong>Платные CMS:</strong>
@@ -109,7 +111,7 @@
                       </ul>
                     </template>
                   </step-pane>
-                  <step-pane :inputs="designes" v-show="progress === 3">
+                  <step-pane :inputs="filterDesignes" v-show="progress === 3">
                     <template v-slot>
                       <p class="calc-step-pane-header">Вам нужен дизайн:</p>
                       <p class="calc-descr">
@@ -130,7 +132,7 @@
                       </p>
                     </template>
                   </step-pane>
-                  <step-pane :inputs="paramsLanding" v-show="progress === 4">
+                  <step-pane :inputs="filterParams" v-show="progress === 4">
                     <template v-slot>
                       <p class="calc-step-pane-header">
                         Дополнительные параметры:
@@ -190,7 +192,7 @@
                       </p>
                     </template>
                   </step-pane>
-                  <step-pane :inputs="cms" v-show="progress === 3">
+                  <step-pane :inputs="filterCms" v-show="progress === 3">
                     <template v-slot>
                       <p class="calc-step-pane-header">Выберите CMS:</p>
                       <p class="calc-descr">
@@ -215,7 +217,7 @@
                           <b>одностраничники, блоги, сайты-витрины</b> и даже
                           <b>интернет-магазины</b>. Последние, правда, обычно
                           получаются с некоторым ограничением функционала.
-                          <b>Drupal или OpenCart.</b>
+                          <b>Drupal или opencart.</b>
                         </li>
                         <li>
                           <strong>Платные CMS:</strong>
@@ -233,7 +235,7 @@
                       </ul>
                     </template>
                   </step-pane>
-                  <step-pane :inputs="designes" v-show="progress === 4">
+                  <step-pane :inputs="filterDesignes" v-show="progress === 4">
                     <template v-slot>
                       <p class="calc-step-pane-header">Вам нужен дизайн:</p>
                       <p class="calc-descr">
@@ -355,7 +357,7 @@
                       </p>
                     </template>
                   </step-pane>
-                  <step-pane :inputs="params" v-show="progress === 6">
+                  <step-pane :inputs="filterParams" v-show="progress === 6">
                     <template v-slot>
                       <p class="calc-step-pane-header">
                         Дополнительные параметры:
@@ -427,6 +429,11 @@ import { mapState } from "vuex";
 
 export default {
   label: "App",
+  data: () => ({
+    filteredCms: [],
+    filteredDesignes: [],
+    filteredParams: []
+  }),
   components: {
     step,
     stepPane,
@@ -447,12 +454,98 @@ export default {
       "designes",
       "params",
       "pages",
-      "paramsLanding",
       "functions",
       "functionsVisit",
       "functionsShowcase",
       "functionsStore"
-    ])
+    ]),
+    filterCms() {
+      while (this.filteredCms.length) {
+        // eslint-disable-next-line vue/no-side-effects-in-computed-properties
+        this.filteredCms.pop();
+      }
+      this.cms.forEach(item => {
+        if (this.siteType === "landing") {
+          if (item.type === "bitrix" || item.type === "other") {
+            item.price = 30000;
+          }
+        }
+        if (this.siteType === "visit" || this.siteType === "services") {
+          if (item.type === "bitrix" || item.type === "other") {
+            item.price = 35000;
+          }
+        }
+        if (this.siteType === "showcase") {
+          if (item.type === "bitrix" || item.type === "other") {
+            item.price = 40000;
+          }
+        }
+        if (this.siteType === "store" || this.siteType === "enterprise") {
+          if (item.type === "bitrix" || item.type === "other") {
+            item.price = 60000;
+          }
+        }
+        if (this.siteType === "store") {
+          if (item.type === "bitrix" || item.type === "other") {
+            item.price = 60000;
+          }
+        }
+        if (this.siteType !== "store") {
+          if (item.type !== "magento" && item.type !== "opencart") {
+            this.filteredCms.push(item);
+          }
+        } else {
+          this.filteredCms.push(item);
+        }
+      });
+      return this.filteredCms;
+    },
+    filterDesignes() {
+      while (this.filteredDesignes.length) {
+        // eslint-disable-next-line vue/no-side-effects-in-computed-properties
+        this.filteredDesignes.pop();
+      }
+      this.designes.forEach(item => {
+        if (this.siteType === "landing") {
+          if (item.type === "individual") {
+            item.price = 30000;
+          }
+        }
+        if (this.siteType === "visit" || this.siteType === "services") {
+          if (item.type === "individual") {
+            item.price = 35000;
+          }
+        }
+        if (this.siteType === "showcase") {
+          if (item.type === "individual") {
+            item.price = 40000;
+          }
+        }
+        if (this.siteType === "store" || this.siteType === "enterprise") {
+          if (item.type === "individual") {
+            item.price = 60000;
+          }
+        }
+        this.filteredDesignes.push(item);
+      });
+      return this.filteredDesignes;
+    },
+    filterParams() {
+      while (this.filteredParams.length) {
+        // eslint-disable-next-line vue/no-side-effects-in-computed-properties
+        this.filteredParams.pop();
+      }
+      this.params.forEach(item => {
+        if (this.siteType === "landing") {
+          if (item.type !== "onec" && item.type !== "yandexmarket") {
+            this.filteredParams.push(item);
+          } else {
+            this.filteredParams.push(item);
+          }
+        }
+      });
+      return this.filteredParams;
+    }
   }
 };
 </script>
