@@ -12,42 +12,6 @@ export default {
       state.steps.pop();
     }
   },
-  set_siteType: (state, payload) => {
-    state.siteType = payload;
-  },
-  set_selected_site: (state, payload) => {
-    state.selected_site = payload;
-  },
-  set_selected_cms: (state, payload) => {
-    state.selected_cms = payload;
-  },
-  set_selected_pages: (state, payload) => {
-    state.selected_pages = payload;
-  },
-  set_selected_design: (state, payload) => {
-    state.selected_design = payload;
-  },
-  updateTotalPrice: (state, payload) => {
-    state.totalPrice = payload;
-  },
-  set_sitePrice: (state, payload) => {
-    state.sitePrice = payload;
-  },
-  set_cmsPrice: (state, payload) => {
-    state.cmsPrice = payload;
-  },
-  set_designPrice: (state, payload) => {
-    state.designPrice = payload;
-  },
-  set_paramsPrice: (state, payload) => {
-    state.paramsPrice = payload;
-  },
-  set_functionsPrice: (state, payload) => {
-    state.functionsPrice = payload;
-  },
-  set_pagesPrice: (state, payload) => {
-    state.pagesPrice = payload;
-  },
   set_data: (state, payload) => {
     state.sites = payload.sites;
     state.cms = payload.cms;
@@ -55,5 +19,8 @@ export default {
     state.pages = payload.pages;
     state.params = payload.params;
     state.functions = payload.functions;
+  },
+  updateTotalPrice: (state, payload) => {
+    state.totalPrice = payload;
   }
 };

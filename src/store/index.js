@@ -15,6 +15,7 @@ import actions from "./actions";
 import getters from "./getters";
 import mutations from "./mutations";
 import state from "./state";
+import modules from "./modules";
 
 Vue.use(Vuex);
 
@@ -23,7 +24,8 @@ const store = new Vuex.Store({
   actions,
   getters,
   mutations,
-  state
+  state,
+  modules
 });
 
 export default store;

@@ -67,7 +67,7 @@
                     </ul>
                   </template>
                 </step-pane>
-                <div v-show="siteType === 'landing'">
+                <!-- <div v-show="siteType === 'landing'">
                   <step-pane :inputs="filterCms" v-show="progress === 2">
                     <template v-slot>
                       <p class="calc-step-pane-header">Выберите CMS:</p>
@@ -183,8 +183,8 @@
                       </ul>
                     </template>
                   </step-pane>
-                </div>
-                <div v-show="siteType !== 'landing'">
+                </div> -->
+                <!-- <div v-show="siteType !== 'landing'">
                   <step-pane :inputs="pages" v-show="progress === 2">
                     <template v-slot>
                       <p class="calc-step-pane-header">
@@ -408,7 +408,7 @@
                       </ul>
                     </template>
                   </step-pane>
-                </div>
+                </div> -->
               </div>
             </v-col>
             <v-col cols="12" lg="4" xl="3">
@@ -458,94 +458,94 @@ export default {
       "functionsVisit",
       "functionsShowcase",
       "functionsStore"
-    ]),
-    filterCms() {
-      // while (this.filteredCms.length) {
-      //   // eslint-disable-next-line vue/no-side-effects-in-computed-properties
-      //   this.filteredCms.pop();
-      // }
-      // this.cms.forEach(item => {
-      //   if (this.siteType === "landing") {
-      //     if (item.type === "bitrix" || item.type === "other") {
-      //       item.price = 30000;
-      //     }
-      //   }
-      //   if (this.siteType === "visit" || this.siteType === "services") {
-      //     if (item.type === "bitrix" || item.type === "other") {
-      //       item.price = 35000;
-      //     }
-      //   }
-      //   if (this.siteType === "showcase") {
-      //     if (item.type === "bitrix" || item.type === "other") {
-      //       item.price = 40000;
-      //     }
-      //   }
-      //   if (this.siteType === "store" || this.siteType === "enterprise") {
-      //     if (item.type === "bitrix" || item.type === "other") {
-      //       item.price = 60000;
-      //     }
-      //   }
-      //   if (this.siteType === "store") {
-      //     if (item.type === "bitrix" || item.type === "other") {
-      //       item.price = 60000;
-      //     }
-      //   }
-      //   if (this.siteType !== "store") {
-      //     if (item.type !== "magento" && item.type !== "opencart") {
-      //       this.filteredCms.push(item);
-      //     }
-      //   } else {
-      //     this.filteredCms.push(item);
-      //   }
-      // });
-      return this.filteredCms;
-    },
-    filterDesignes() {
-      // while (this.filteredDesignes.length) {
-      //   // eslint-disable-next-line vue/no-side-effects-in-computed-properties
-      //   this.filteredDesignes.pop();
-      // }
-      // this.designes.forEach(item => {
-      //   if (this.siteType === "landing") {
-      //     if (item.type === "individual") {
-      //       item.price = 30000;
-      //     }
-      //   }
-      //   if (this.siteType === "visit" || this.siteType === "services") {
-      //     if (item.type === "individual") {
-      //       item.price = 35000;
-      //     }
-      //   }
-      //   if (this.siteType === "showcase") {
-      //     if (item.type === "individual") {
-      //       item.price = 40000;
-      //     }
-      //   }
-      //   if (this.siteType === "store" || this.siteType === "enterprise") {
-      //     if (item.type === "individual") {
-      //       item.price = 60000;
-      //     }
-      //   }
-      //   this.filteredDesignes.push(item);
-      // });
-      return this.filteredDesignes;
-    },
-    filterParams() {
-      // while (this.filteredParams.length) {
-      //   // eslint-disable-next-line vue/no-side-effects-in-computed-properties
-      //   this.filteredParams.pop();
-      // }
-      // this.params.forEach(item => {
-      //   if (this.siteType === "landing") {
-      //     if (item.type !== "onec" && item.type !== "yandexmarket") {
-      //       this.filteredParams.push(item);
-      //     } else {
-      //       this.filteredParams.push(item);
-      //     }
-      //   }
-      // });
-      return this.filteredParams;
-    }
+    ])
+    // filterCms() {
+    //   // while (this.filteredCms.length) {
+    //   //   // eslint-disable-next-line vue/no-side-effects-in-computed-properties
+    //   //   this.filteredCms.pop();
+    //   // }
+    //   // this.cms.forEach(item => {
+    //   //   if (this.siteType === "landing") {
+    //   //     if (item.type === "bitrix" || item.type === "other") {
+    //   //       item.price = 30000;
+    //   //     }
+    //   //   }
+    //   //   if (this.siteType === "visit" || this.siteType === "services") {
+    //   //     if (item.type === "bitrix" || item.type === "other") {
+    //   //       item.price = 35000;
+    //   //     }
+    //   //   }
+    //   //   if (this.siteType === "showcase") {
+    //   //     if (item.type === "bitrix" || item.type === "other") {
+    //   //       item.price = 40000;
+    //   //     }
+    //   //   }
+    //   //   if (this.siteType === "store" || this.siteType === "enterprise") {
+    //   //     if (item.type === "bitrix" || item.type === "other") {
+    //   //       item.price = 60000;
+    //   //     }
+    //   //   }
+    //   //   if (this.siteType === "store") {
+    //   //     if (item.type === "bitrix" || item.type === "other") {
+    //   //       item.price = 60000;
+    //   //     }
+    //   //   }
+    //   //   if (this.siteType !== "store") {
+    //   //     if (item.type !== "magento" && item.type !== "opencart") {
+    //   //       this.filteredCms.push(item);
+    //   //     }
+    //   //   } else {
+    //   //     this.filteredCms.push(item);
+    //   //   }
+    //   // });
+    //   return this.filteredCms;
+    // },
+    // filterDesignes() {
+    //   // while (this.filteredDesignes.length) {
+    //   //   // eslint-disable-next-line vue/no-side-effects-in-computed-properties
+    //   //   this.filteredDesignes.pop();
+    //   // }
+    //   // this.designes.forEach(item => {
+    //   //   if (this.siteType === "landing") {
+    //   //     if (item.type === "individual") {
+    //   //       item.price = 30000;
+    //   //     }
+    //   //   }
+    //   //   if (this.siteType === "visit" || this.siteType === "services") {
+    //   //     if (item.type === "individual") {
+    //   //       item.price = 35000;
+    //   //     }
+    //   //   }
+    //   //   if (this.siteType === "showcase") {
+    //   //     if (item.type === "individual") {
+    //   //       item.price = 40000;
+    //   //     }
+    //   //   }
+    //   //   if (this.siteType === "store" || this.siteType === "enterprise") {
+    //   //     if (item.type === "individual") {
+    //   //       item.price = 60000;
+    //   //     }
+    //   //   }
+    //   //   this.filteredDesignes.push(item);
+    //   // });
+    //   return this.filteredDesignes;
+    // },
+    // filterParams() {
+    //   // while (this.filteredParams.length) {
+    //   //   // eslint-disable-next-line vue/no-side-effects-in-computed-properties
+    //   //   this.filteredParams.pop();
+    //   // }
+    //   // this.params.forEach(item => {
+    //   //   if (this.siteType === "landing") {
+    //   //     if (item.type !== "onec" && item.type !== "yandexmarket") {
+    //   //       this.filteredParams.push(item);
+    //   //     } else {
+    //   //       this.filteredParams.push(item);
+    //   //     }
+    //   //   }
+    //   // });
+    //   return this.filteredParams;
+    // }
   },
   created: function() {
     this.$store.dispatch("fetch");

@@ -50,7 +50,7 @@ export default {
   name: "customInput",
   props: {
     items: {
-      type: Array,
+      type: [Array, Object],
       default: () => []
     }
   },
