@@ -70,7 +70,9 @@
           </p>
           <p class="calc-smeta-total my-0">{{ calculate }} <span>₽</span></p>
         </div>
-        <button class="calc-smeta-reset" type="reset">Сбросить</button>
+        <button class="calc-smeta-reset" type="reset" @click="reset">
+          Сбросить
+        </button>
         <form action="#" class="calc-smeta-form" @submit.prevent="submit">
           <h4 class="calc-smeta-form-header">Ваши данные</h4>
           <input
@@ -181,6 +183,11 @@ export default {
           this.submitStatus = "OK";
         }, 500);
       }
+    },
+    reset() {
+      this.name = null;
+      this.email = null;
+      this.phone = null;
     }
   }
 };
@@ -411,6 +418,7 @@ span {
       text-align: center;
       color: #35659a;
       pointer-events: none;
+      opacity: 0.5;
 
       &:hover {
         cursor: pointer;
@@ -421,6 +429,7 @@ span {
         background: #f42d57;
         color: #ffffff;
         pointer-events: all;
+        opacity: 1;
       }
     }
   }
