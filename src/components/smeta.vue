@@ -197,7 +197,7 @@ export default {
 @import "~vuetify/src/styles/settings/_variables";
 
 span {
-  font-family: Roboto;
+  //font-family: Roboto;
 }
 
 .calc {
