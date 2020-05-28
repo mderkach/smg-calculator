@@ -54,6 +54,9 @@ export default {
       default: () => []
     }
   },
+  data: () => ({
+    selectedParameters: []
+  }),
   computed: {
     ...mapState([
       "totalPrice",
@@ -62,7 +65,8 @@ export default {
       "selected_site",
       "selected_cms",
       "selected_design",
-      "selected_pages"
+      "selected_pages",
+      "parameters"
     ])
   },
   methods: {
@@ -73,22 +77,31 @@ export default {
       "set_selected_cms",
       "set_selected_design",
       "set_selected_pages",
+      "set_selected_site_label",
+      "set_selected_cms_label",
+      "set_selected_design_label",
+      "set_selected_pages_label",
       "set_sitePrice",
       "set_cmsPrice",
       "set_designPrice",
       "set_paramsPrice",
+      "set_parameters",
       "updateTotalPrice"
     ]),
     calcRadio(input, index) {
       this.$store.commit("set_selected_" + input.name, index);
       if (input.name === "site") {
         this.$store.commit("set_siteType", input.type);
+        this.$store.commit("set_selected_site_label", input.label);
       }
       this.$store.commit("set_" + input.name + "Price", input.price);
+      this.$store.commit("set_selected_" + input.name + "_label", input.label);
       this.$store.commit("updateTotalPrice", input.price);
     },
     calcCheckbox(input, event) {
       let priceToUpdate = this.paramsPrice;
+      let parameters = ` ${input.label}, стоимость: ${input.price}`;
+
       if (event.target.classList.contains("calc-input-label")) {
         event.target.classList.toggle("active");
       } else {
@@ -98,10 +111,17 @@ export default {
       if (input.checked === true) {
         priceToUpdate += input.price;
         this.$store.commit("set_" + input.name + "Price", priceToUpdate);
+        this.selectedParameters.push(parameters);
       } else {
         priceToUpdate -= input.price;
         this.$store.commit("set_" + input.name + "Price", priceToUpdate);
+        this.selectedParameters.splice(
+          this.selectedParameters.indexOf(parameters),
+          1
+        );
+        console.log(this.selectedParameters);
       }
+      this.$store.commit("set_parameters", this.selectedParameters);
     },
     bindActiveClass(input) {
       let method = "selected_" + input.name;

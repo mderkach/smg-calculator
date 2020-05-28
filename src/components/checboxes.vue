@@ -47,11 +47,14 @@ export default {
     }
   },
   data: () => ({
-    opened: [0]
+    opened: [0],
+    selectedModule: []
   }),
   methods: {
-    ...mapMutations(["set_functionsPrice", "updateTotalPrice"]),
+    ...mapMutations(["set_functionsPrice", "updateTotalPrice", "set_modules"]),
     calcCheckbox(input, e) {
+      let module = ` ${input.label}, стоимость: ${input.price}`;
+
       if (e.target.classList.contains("calc-checkboxes-item")) {
         e.target.classList.toggle("active");
       } else {
@@ -62,14 +65,17 @@ export default {
       if (input.checked === true) {
         priceToUpdate += input.price;
         this.$store.commit("set_functionsPrice", priceToUpdate);
+        this.selectedModule.push(module);
       } else {
         priceToUpdate -= input.price;
         this.$store.commit("set_functionsPrice", priceToUpdate);
+        this.selectedModule.splice(this.selectedModule.indexOf(module), 1);
       }
+      this.$store.commit("set_modules", this.selectedModule);
     }
   },
   computed: {
-    ...mapState(["totalPrice", "functionsPrice"])
+    ...mapState(["totalPrice", "functionsPrice", "modules"])
   }
 };
 </script>
