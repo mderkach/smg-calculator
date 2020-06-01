@@ -117,6 +117,24 @@
                 (progress === 4 && siteType === 'landing') || progress === 6
             }"
           />
+          <input
+            type="hidden"
+            :value="`Сайт: ${selected_site_label},${sitePrice}`"
+          />
+          <input
+            type="hidden"
+            :value="`CMS: ${selected_cms_label},${cmsPrice}`"
+          />
+          <input
+            type="hidden"
+            :value="`Дизайн: ${selected_design_label},${designPrice}`"
+          />
+          <input
+            type="hidden"
+            :value="`Страницы: ${selected_pages_label},${pagesPrice}`"
+          />
+          <input type="hidden" :value="`Модули: ${modules}`" />
+          <input type="hidden" :value="`Доп параметры: ${parameters}`" />
         </form>
       </div>
     </div>
@@ -157,7 +175,13 @@ export default {
       "designPrice",
       "paramsPrice",
       "functionsPrice",
-      "pagesPrice"
+      "pagesPrice",
+      "selected_site_label",
+      "selected_cms_label",
+      "selected_pages_label",
+      "selected_design_label",
+      "modules",
+      "parameters"
     ]),
     calculate() {
       return (
