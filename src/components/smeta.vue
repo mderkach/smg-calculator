@@ -76,6 +76,7 @@
         <form action="#" class="calc-smeta-form" @submit.prevent="submit">
           <h4 class="calc-smeta-form-header">Ваши данные</h4>
           <input
+                  :disabled="submitStatus"
             class="calc-smeta-input"
             type="text"
             name="name"
@@ -86,6 +87,7 @@
             @blur="$v.name.$touch()"
           />
           <input
+                  :disabled="submitStatus"
             class="calc-smeta-input"
             type="email"
             name="email"
@@ -96,6 +98,7 @@
             @blur="$v.email.$touch()"
           />
           <input
+                  :disabled="submitStatus"
             class="calc-smeta-input"
             type="text"
             name="phone"
@@ -110,6 +113,8 @@
             Нажав на кнопку, Вы даете согласие на обработку Персональных данных
           </p>
           <input
+                  v-show="!submitStatus"
+                  :disabled="submitStatus"
             type="submit"
             class="calc-smeta-submit"
             :class="{
@@ -135,6 +140,7 @@
           />
           <input type="hidden" :value="`Модули: ${modules}`" />
           <input type="hidden" :value="`Доп параметры: ${parameters}`" />
+          <h4 class="calc-smeta-form-header" v-html="textSubmit"></h4>
         </form>
       </div>
     </div>
@@ -144,6 +150,7 @@
 <script>
 import { mapGetters } from "vuex";
 import { required } from "vuelidate/lib/validators";
+import axios from "axios";
 
 export default {
   name: "smeta",
@@ -151,7 +158,7 @@ export default {
     name: null,
     phone: null,
     email: null,
-    submitStatus: null
+    submitStatus: false,
   }),
   validations: {
     name: {
@@ -183,6 +190,9 @@ export default {
       "modules",
       "parameters"
     ]),
+    textSubmit() {
+      return this.submitStatus ? "Спасибо!<br>Ваша заявка принята!" : "";
+    },
     calculate() {
       return (
         this.sitePrice +
@@ -196,22 +206,33 @@ export default {
   },
   methods: {
     submit() {
-      // console.log("submit!");
       this.$v.$touch();
-      if (this.$v.$invalid) {
-        this.submitStatus = "ERROR";
-      } else {
-        // do your submit logic here
-        this.submitStatus = "PENDING";
-        setTimeout(() => {
-          this.submitStatus = "OK";
-        }, 500);
+      if (!this.$v.$invalid) {
+        const post = [
+          `Сайт: ${this.selected_site_label},${this.sitePrice}`,
+          `CMS: ${this.selected_cms_label},${this.cmsPrice}`,
+          `Дизайн: ${this.selected_design_label},${this.designPrice}`,
+          `Страницы: ${this.selected_pages_label},${this.pagesPrice}`,
+          `Модули: ${this.modules}`,
+          `Доп параметры: ${this.parameters}`
+        ];
+        axios.post(`https://softmg.ru/local/templates/smg.v.2/includes/ajax/calc.php`, {
+          data: post,
+          user: {'name': this.name, 'phone': this.phone, 'email': this.email}
+        }).then((response) => {
+          window.console.log(response);
+          this.submitStatus = true;
+        }).catch((error) => {
+          window.console.log(error);
+          this.submitStatus = true;
+        });
       }
     },
     reset() {
       this.name = null;
       this.email = null;
       this.phone = null;
+      this.submitStatus = false;
     }
   }
 };
