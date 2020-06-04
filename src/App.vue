@@ -28,11 +28,13 @@
                 <step />
                 <step-pane :inputs="sites" v-show="progress === 1">
                   <template v-slot>
-                    <p class="calc-step-pane-header">Вам нужно:</p>
                     <p class="calc-descr">
                       Определитесь с типом сайта. Сильнее всего стоимость
                       интернет-ресурса зависит именно от данного выбора.
                     </p>
+                  </template>
+                  <template v-slot:bottom>
+                    <p class="calc-step-pane-header">Вам нужно:</p>
                     <ul>
                       <li>
                         <strong>Лендинг</strong> — одностраничный сайт. Такой
@@ -82,6 +84,8 @@
                         отлично подходит для создания на её базе
                         интернет-магазина.
                       </p>
+                    </template>
+                    <template v-slot:bottom>
                       <ul>
                         <li>
                           <strong>Бесплатные CMS:</strong>
@@ -206,6 +210,8 @@
                         отлично подходит для создания на её базе
                         интернет-магазина.
                       </p>
+                    </template>
+                    <template v-slot:bottom>
                       <ul>
                         <li>
                           <strong>Бесплатные CMS:</strong>

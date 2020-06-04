@@ -3,6 +3,7 @@
     <slot></slot>
     <custom-input :items="inputs" v-if="inputs" />
     <checkboxes :checkbox="checkbox" v-if="checkbox" />
+    <slot name="bottom"></slot>
     <div class="calc-step-pane-row">
       <button
         class="calc-next"
