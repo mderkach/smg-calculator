@@ -76,7 +76,7 @@
         <form action="#" class="calc-smeta-form" @submit.prevent="submit">
           <h4 class="calc-smeta-form-header">Ваши данные</h4>
           <input
-                  :disabled="submitStatus"
+            :disabled="submitStatus"
             class="calc-smeta-input"
             type="text"
             name="name"
@@ -87,7 +87,7 @@
             @blur="$v.name.$touch()"
           />
           <input
-                  :disabled="submitStatus"
+            :disabled="submitStatus"
             class="calc-smeta-input"
             type="email"
             name="email"
@@ -98,7 +98,7 @@
             @blur="$v.email.$touch()"
           />
           <input
-                  :disabled="submitStatus"
+            :disabled="submitStatus"
             class="calc-smeta-input"
             type="text"
             name="phone"
@@ -113,8 +113,8 @@
             Нажав на кнопку, Вы даете согласие на обработку Персональных данных
           </p>
           <input
-                  v-show="!submitStatus"
-                  :disabled="submitStatus"
+            v-show="!submitStatus"
+            :disabled="submitStatus"
             type="submit"
             class="calc-smeta-submit"
             :class="{
@@ -158,7 +158,7 @@ export default {
     name: null,
     phone: null,
     email: null,
-    submitStatus: false,
+    submitStatus: false
   }),
   validations: {
     name: {
@@ -216,16 +216,22 @@ export default {
           `Модули: ${this.modules}`,
           `Доп параметры: ${this.parameters}`
         ];
-        axios.post(`https://softmg.ru/local/templates/smg.v.2/includes/ajax/calc.php`, {
-          data: post,
-          user: {'name': this.name, 'phone': this.phone, 'email': this.email}
-        }).then((response) => {
-          window.console.log(response);
-          this.submitStatus = true;
-        }).catch((error) => {
-          window.console.log(error);
-          this.submitStatus = true;
-        });
+        axios
+          .post(
+            `https://softmg.ru/local/templates/smg.v.2/includes/ajax/calc.php`,
+            {
+              data: post,
+              user: { name: this.name, phone: this.phone, email: this.email }
+            }
+          )
+          .then(response => {
+            window.console.log(response);
+            this.submitStatus = true;
+          })
+          .catch(error => {
+            window.console.log(error);
+            this.submitStatus = true;
+          });
       }
     },
     reset() {
@@ -242,7 +248,7 @@ export default {
 @import "~vuetify/src/styles/settings/_variables";
 
 span {
-  //font-family: Roboto;
+  font-family: Roboto;
 }
 
 .calc {

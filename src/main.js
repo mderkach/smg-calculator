@@ -3,7 +3,7 @@ import App from "./App.vue";
 import vuetify from "./plugins/vuetify";
 import store from "./store";
 import Vuelidate from "vuelidate";
-import axios from 'axios';
+import axios from "axios";
 const VueInputMask = require("vue-inputmask").default;
 
 Vue.use(VueInputMask);

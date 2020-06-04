@@ -542,6 +542,8 @@ export default {
           } else {
             this.filteredParams.push(item);
           }
+        } else {
+          this.filteredParams.push(item);
         }
       });
       return this.filteredParams;
