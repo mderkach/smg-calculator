@@ -119,7 +119,6 @@ export default {
           this.selectedParameters.indexOf(parameters),
           1
         );
-        console.log(this.selectedParameters);
       }
       this.$store.commit("set_parameters", this.selectedParameters);
     },

@@ -103,7 +103,7 @@ export default {
     color: #35659a;
 
     &:disabled {
-      opacity: 0.5;
+      opacity: 0;
     }
 
     @media #{map-get($display-breakpoints, 'md-and-down')} {
