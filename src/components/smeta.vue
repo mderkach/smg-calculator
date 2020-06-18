@@ -247,10 +247,6 @@ export default {
 <style lang="scss">
 @import "~vuetify/src/styles/settings/_variables";
 
-span {
-  //font-family: Roboto;
-}
-
 .calc {
   &-smeta {
     &-outer {
@@ -324,10 +320,6 @@ span {
 
         .calc-smeta-price {
           color: #35659a;
-
-          span {
-            font-weight: bold;
-          }
         }
       }
     }
@@ -345,9 +337,13 @@ span {
     }
 
     &-price {
-      font-family: AvenirBold;
+      font-family: "AvenirBold";
       font-size: 18px;
       line-height: 22px;
+
+      span {
+        font-family: "Roboto", sans-serif;
+      }
 
       @media #{map-get($display-breakpoints, 'lg-and-down')} {
         font-size: 14px;
@@ -359,7 +355,7 @@ span {
     }
 
     &-total {
-      font-family: AvenirBold;
+      font-family: "AvenirBold";
       font-style: normal;
       font-weight: bold;
       font-size: 24px;
@@ -377,6 +373,10 @@ span {
         @media #{map-get($display-breakpoints, 'md-and-down')} {
           flex-wrap: wrap;
         }
+      }
+
+      span {
+        font-family: "Roboto", sans-serif;
       }
 
       &-descr {
@@ -406,7 +406,7 @@ span {
     &-form {
       &-header {
         margin: 10px auto 15px;
-        font-family: AvenirBold;
+        font-family: "AvenirBold";
         font-style: normal;
         font-weight: bold;
         font-size: 20px;

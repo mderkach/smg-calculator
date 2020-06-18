@@ -582,6 +582,16 @@ export default {
   font-style: normal;
 }
 
+@font-face {
+  font-family: "Roboto";
+  src: url("~@/assets/fonts/Roboto.eot");
+  src: url("~@/assets/fonts/Roboto.eot?#iefix") format("embedded-opentype"),
+    url("~@/assets/fonts/Roboto.woff") format("woff"),
+    url("~@/assets/fonts/Roboto.ttf") format("truetype");
+  font-weight: bold;
+  font-style: normal;
+}
+
 #app {
   font-family: Avenir, sans-serif;
   -webkit-font-smoothing: antialiased;
