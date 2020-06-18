@@ -6,9 +6,9 @@
           <v-row>
             <v-col cols="12" xl="8" offset-xl="2" offset="0" class="py-0">
               <div class="calc-header-wrapper">
-                <h2 class="calc-header">
+                <a href="#" class="calc-header">
                   Калькулятор услуг
-                </h2>
+                </a>
                 <p class="calc-descr">
                   Калькулятор позволяет выяснить стоимость разработки сайта, не
                   обращаясь для этого к нашему менеджеру: 5 несложных шагов и вы
@@ -600,11 +600,19 @@ export default {
 
 .calc {
   &-header {
+    display: block;
     margin-bottom: 20px;
     font-style: normal;
     font-weight: bold;
     font-size: 72px;
     line-height: 120%;
+    color: #000 !important;
+    text-decoration: none;
+
+    &:hover {
+      cursor: pointer;
+      color: #000;
+    }
 
     @media #{map-get($display-breakpoints, 'md-and-down')} {
       font-size: 45px;
