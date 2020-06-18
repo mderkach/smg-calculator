@@ -21,7 +21,10 @@
         />
         <svg width="134" class="calc-icon" v-html="input.icon"></svg>
         <p class="calc-input-name">{{ input.label }}</p>
-        <p class="calc-input-price">+ {{ input.price }} ₽</p>
+        <p class="calc-input-price">
+          + {{ input.price }}
+          <span>₽</span>
+        </p>
       </label>
       <label
         v-else
@@ -37,7 +40,10 @@
         />
         <svg width="134" class="calc-icon" v-html="input.icon"></svg>
         <p class="calc-input-name">{{ input.label }}</p>
-        <p class="calc-input-price">+ {{ input.price }} ₽</p>
+        <p class="calc-input-price">
+          + {{ input.price }}
+          <span>₽</span>
+        </p>
       </label>
     </div>
   </div>
@@ -250,6 +256,10 @@ export default {
       line-height: 33px;
       text-align: center;
       color: #35659a;
+
+      span {
+        font-family: "Roboto", sans-serif;
+      }
     }
   }
 }
