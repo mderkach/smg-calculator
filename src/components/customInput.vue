@@ -55,7 +55,8 @@ export default {
     }
   },
   data: () => ({
-    selectedParameters: []
+    selectedParameters: [],
+    selectedParametersLabel: []
   }),
   computed: {
     ...mapState([
@@ -86,6 +87,7 @@ export default {
       "set_designPrice",
       "set_paramsPrice",
       "set_parameters",
+      "set_parameters_label",
       "updateTotalPrice"
     ]),
     calcRadio(input, index) {
@@ -101,6 +103,7 @@ export default {
     calcCheckbox(input, event) {
       let priceToUpdate = this.paramsPrice;
       let parameters = ` ${input.label}, стоимость: ${input.price}`;
+      let label = input.label;
 
       if (event.target.classList.contains("calc-input-label")) {
         event.target.classList.toggle("active");
@@ -112,6 +115,7 @@ export default {
         priceToUpdate += input.price;
         this.$store.commit("set_" + input.name + "Price", priceToUpdate);
         this.selectedParameters.push(parameters);
+        this.selectedParametersLabel.push(label);
       } else {
         priceToUpdate -= input.price;
         this.$store.commit("set_" + input.name + "Price", priceToUpdate);
@@ -119,8 +123,13 @@ export default {
           this.selectedParameters.indexOf(parameters),
           1
         );
+        this.selectedParametersLabel.splice(
+          this.selectedParametersLabel.indexOf(label),
+          1
+        );
       }
       this.$store.commit("set_parameters", this.selectedParameters);
+      this.$store.commit("set_parameters_label", this.selectedParametersLabel);
     },
     bindActiveClass(input) {
       let method = "selected_" + input.name;

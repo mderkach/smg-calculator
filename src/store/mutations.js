@@ -65,5 +65,8 @@ export default {
   },
   set_parameters: (state, payload) => {
     state.parameters = payload;
+  },
+  set_parameters_label: (state, payload) => {
+    state.parameters_label = payload;
   }
 };

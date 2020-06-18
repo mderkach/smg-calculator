@@ -63,6 +63,12 @@
             </p>
           </div>
         </div>
+        <div
+          class="calc-smeta-row active is-additional"
+          v-if="parameters_lab.length > 1"
+        >
+          <p class="calc-smeta-descr mb-3">({{ parameters_lab }})</p>
+        </div>
         <div class="calc-smeta-total-wrapper">
           <p class="calc-smeta-total-descr my-0">
             Итого <br />
@@ -188,7 +194,8 @@ export default {
       "selected_pages_label",
       "selected_design_label",
       "modules",
-      "parameters"
+      "parameters",
+      "parameters_label"
     ]),
     textSubmit() {
       return this.submitStatus ? "Спасибо!<br>Ваша заявка принята!" : "";
@@ -202,6 +209,12 @@ export default {
         this.functionsPrice +
         this.pagesPrice
       );
+    },
+    parameters_lab() {
+      let string = [];
+      string.push(this.selected_pages_label);
+      string.push(this.parameters_label);
+      return string.join(",");
     }
   },
   methods: {
@@ -320,6 +333,12 @@ export default {
 
         .calc-smeta-price {
           color: #35659a;
+        }
+      }
+
+      &.is-additional {
+        .calc-smeta-descr {
+          color: #000;
         }
       }
     }

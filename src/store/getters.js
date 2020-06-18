@@ -63,5 +63,8 @@ export default {
   },
   parameters: state => {
     return state.parameters;
+  },
+  parameters_label: state => {
+    return state.parameters_label;
   }
 };

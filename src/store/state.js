@@ -16,6 +16,7 @@ export default {
 	selected_design_label: undefined,
 	modules: [],
 	parameters: [],
+	parameters_label: '',
 	totalPrice: 0,
 	sitePrice: 0,
 	cmsPrice: 0,
