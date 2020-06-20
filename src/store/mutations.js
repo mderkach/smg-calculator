@@ -60,6 +60,24 @@ export default {
   set_pagesPrice: (state, payload) => {
     state.pagesPrice = payload;
   },
+  set_sitePriceInt: (state, payload) => {
+    state.sitePriceInt = payload;
+  },
+  set_cmsPriceInt: (state, payload) => {
+    state.cmsPriceInt = payload;
+  },
+  set_designPriceInt: (state, payload) => {
+    state.designPriceInt = payload;
+  },
+  set_paramsPriceInt: (state, payload) => {
+    state.paramsPriceInt = payload;
+  },
+  set_functionsPriceInt: (state, payload) => {
+    state.functionsPriceInt = payload;
+  },
+  set_pagesPriceInt: (state, payload) => {
+    state.pagesPriceInt = payload;
+  },
   set_modules: (state, payload) => {
     state.modules = payload;
   },

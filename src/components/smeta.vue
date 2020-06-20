@@ -9,17 +9,22 @@
       <div class="calc-smeta-body">
         <div class="calc-smeta-row" :class="progress >= 1 ? 'active' : ''">
           <p class="calc-smeta-descr mb-3">Проектирование</p>
-          <p class="calc-smeta-price mb-3">{{ sitePrice }} <span>₽</span></p>
+          <p class="calc-smeta-price mb-3">
+            {{ convert_site }}
+            <span>₽</span>
+          </p>
         </div>
         <div v-if="siteType === 'landing'">
           <div class="calc-smeta-row" :class="progress >= 2 ? 'active' : ''">
             <p class="calc-smeta-descr mb-3">Система управления сайтом</p>
-            <p class="calc-smeta-price mb-3">{{ cmsPrice }} <span>₽</span></p>
+            <p class="calc-smeta-price mb-3">
+              {{ convert_cms }} <span>₽</span>
+            </p>
           </div>
           <div class="calc-smeta-row" :class="progress >= 3 ? 'active' : ''">
             <p class="calc-smeta-descr mb-3">Дизайн и верстка</p>
             <p class="calc-smeta-price mb-3">
-              {{ designPrice }} <span>₽</span>
+              {{ convert_design }} <span>₽</span>
             </p>
           </div>
           <div class="calc-smeta-row" :class="progress >= 4 ? 'active' : ''">
@@ -27,7 +32,7 @@
               Дополнительные опции
             </p>
             <p class="calc-smeta-price mb-3">
-              {{ paramsPrice + pagesPrice }}
+              {{ convert_additionals }}
               <span>₽</span>
             </p>
           </div>
@@ -35,18 +40,20 @@
         <div v-else>
           <div class="calc-smeta-row" :class="progress >= 3 ? 'active' : ''">
             <p class="calc-smeta-descr mb-3">Система управления сайтом</p>
-            <p class="calc-smeta-price mb-3">{{ cmsPrice }} <span>₽</span></p>
+            <p class="calc-smeta-price mb-3">
+              {{ convert_cms }} <span>₽</span>
+            </p>
           </div>
           <div class="calc-smeta-row" :class="progress >= 4 ? 'active' : ''">
             <p class="calc-smeta-descr mb-3">Дизайн и верстка</p>
             <p class="calc-smeta-price mb-3">
-              {{ designPrice }} <span>₽</span>
+              {{ convert_design }} <span>₽</span>
             </p>
           </div>
           <div class="calc-smeta-row" :class="progress >= 5 ? 'active' : ''">
             <p class="calc-smeta-descr mb-3">Функционал</p>
             <p class="calc-smeta-price mb-3">
-              {{ functionsPrice }}
+              {{ convert_functions }}
               <span>₽</span>
             </p>
           </div>
@@ -58,7 +65,7 @@
               Дополнительные опции
             </p>
             <p class="calc-smeta-price mb-3">
-              {{ paramsPrice + pagesPrice }}
+              {{ convert_additionals }}
               <span>₽</span>
             </p>
           </div>
@@ -189,6 +196,12 @@ export default {
       "paramsPrice",
       "functionsPrice",
       "pagesPrice",
+      "sitePriceInt",
+      "cmsPriceInt",
+      "designPriceInt",
+      "paramsPriceInt",
+      "functionsPriceInt",
+      "pagesPriceInt",
       "selected_site_label",
       "selected_cms_label",
       "selected_pages_label",
@@ -202,12 +215,12 @@ export default {
     },
     calculate() {
       return (
-        this.sitePrice +
-        this.cmsPrice +
-        this.designPrice +
-        this.paramsPrice +
-        this.functionsPrice +
-        this.pagesPrice
+        this.sitePriceInt +
+        this.cmsPriceInt +
+        this.designPriceInt +
+        this.paramsPriceInt +
+        this.functionsPriceInt +
+        this.pagesPriceInt
       );
     },
     parameters_lab() {
@@ -215,6 +228,37 @@ export default {
       string.push(this.selected_pages_label);
       string.push(this.parameters_label);
       return string.join(",");
+    },
+    convert_site() {
+      if (this.sitePrice === 0) {
+        this.$store.commit("set_sitePrice", "-");
+      }
+      return this.sitePrice;
+    },
+    convert_cms() {
+      if (this.cmsPrice === 0) {
+        this.$store.commit("set_cmsPrice", "-");
+      }
+      return this.cmsPrice;
+    },
+    convert_design() {
+      if (this.designPrice === 0) {
+        this.$store.commit("set_designPrice", "-");
+      }
+      return this.designPrice;
+    },
+    convert_additionals() {
+      let value = this.paramsPrice + this.pagesPrice;
+      if (value === 0) {
+        value = "-";
+      }
+      return value;
+    },
+    convert_functions() {
+      if (this.functionsPrice === 0) {
+        this.$store.commit("set_functionsPrice", "-");
+      }
+      return this.functionsPrice;
     }
   },
   methods: {

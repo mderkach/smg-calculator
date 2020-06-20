@@ -92,6 +92,10 @@ export default {
       "set_cmsPrice",
       "set_designPrice",
       "set_paramsPrice",
+      "set_sitePriceInt",
+      "set_cmsPriceInt",
+      "set_designPriceInt",
+      "set_paramsPriceInt",
       "set_parameters",
       "set_parameters_label",
       "updateTotalPrice"
@@ -103,6 +107,7 @@ export default {
         this.$store.commit("set_selected_site_label", input.label);
       }
       this.$store.commit("set_" + input.name + "Price", input.price);
+      this.$store.commit("set_" + input.name + "PriceInt", input.price);
       this.$store.commit("set_selected_" + input.name + "_label", input.label);
       this.$store.commit("updateTotalPrice", input.price);
     },
@@ -120,11 +125,13 @@ export default {
       if (input.checked === true) {
         priceToUpdate += input.price;
         this.$store.commit("set_" + input.name + "Price", priceToUpdate);
+        this.$store.commit("set_" + input.name + "PriceInt", priceToUpdate);
         this.selectedParameters.push(parameters);
         this.selectedParametersLabel.push(label);
       } else {
         priceToUpdate -= input.price;
         this.$store.commit("set_" + input.name + "Price", priceToUpdate);
+        this.$store.commit("set_" + input.name + "PriceInt", priceToUpdate);
         this.selectedParameters.splice(
           this.selectedParameters.indexOf(parameters),
           1

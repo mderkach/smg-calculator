@@ -24,6 +24,13 @@ export default {
 	paramsPrice: 0,
 	functionsPrice: 0,
 	pagesPrice: 0,
+	totalPriceInt: 0,
+	sitePriceInt: 0,
+	cmsPriceInt: 0,
+	designPriceInt: 0,
+	paramsPriceInt: 0,
+	functionsPriceInt: 0,
+	pagesPriceInt: 0,
 	sites: [
 		{
 			name: 'site',

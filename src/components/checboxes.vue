@@ -61,6 +61,9 @@ export default {
         e.target.parentElement.classList.toggle("active");
       }
       let priceToUpdate = this.functionsPrice;
+      if (priceToUpdate === "-") {
+        priceToUpdate = 0;
+      }
       input.checked = !input.checked;
       if (input.checked === true) {
         priceToUpdate += input.price;

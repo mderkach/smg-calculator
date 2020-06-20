@@ -28,6 +28,24 @@ export default {
   pagesPrice: state => {
     return state.pagesPrice;
   },
+  sitePriceInt: state => {
+    return state.sitePriceInt;
+  },
+  paramsPriceInt: state => {
+    return state.paramsPriceInt;
+  },
+  functionsPriceInt: state => {
+    return state.functionsPriceInt;
+  },
+  cmsPriceInt: state => {
+    return state.cmsPriceInt;
+  },
+  designPriceInt: state => {
+    return state.designPriceInt;
+  },
+  pagesPriceInt: state => {
+    return state.pagesPriceInt;
+  },
   sites: state => {
     return state.sites;
   },
