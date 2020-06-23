@@ -83,10 +83,10 @@
           </p>
           <p class="calc-smeta-total my-0">{{ calculate }} <span>₽</span></p>
         </div>
-        <button class="calc-smeta-reset" type="reset" @click="reset">
+        <button v-show="!submitStatus" class="calc-smeta-reset" type="reset" @click="reset">
           Сбросить
         </button>
-        <form action="#" class="calc-smeta-form" @submit.prevent="submit">
+        <form v-show="!submitStatus" action="#" class="calc-smeta-form" @submit.prevent="submit">
           <h4 class="calc-smeta-form-header">Ваши данные</h4>
           <input
             :disabled="submitStatus"
@@ -153,8 +153,8 @@
           />
           <input type="hidden" :value="`Модули: ${modules}`" />
           <input type="hidden" :value="`Доп параметры: ${parameters}`" />
-          <h4 class="calc-smeta-form-header" v-html="textSubmit"></h4>
         </form>
+        <h4 class="calc-smeta-form-header" v-html="textSubmit"></h4>
       </div>
     </div>
   </div>
@@ -211,7 +211,7 @@ export default {
       "parameters_label"
     ]),
     textSubmit() {
-      return this.submitStatus ? "Спасибо!<br>Ваша заявка принята!" : "";
+      return this.submitStatus ? "<br>Спасибо!<br>Ваша заявка принята!" : "";
     },
     calculate() {
       return (
