@@ -83,14 +83,14 @@
           </p>
           <p class="calc-smeta-total my-0">{{ calculate }} <span>₽</span></p>
         </div>
-        <button
+        <!-- <button
           v-show="!submitStatus"
           class="calc-smeta-reset"
           type="reset"
           @click="reset"
         >
           Сбросить
-        </button>
+        </button> -->
         <form
           v-show="!submitStatus"
           action="#"
@@ -294,6 +294,7 @@ export default {
           .then(response => {
             window.console.log(response);
             this.submitStatus = true;
+            document.querySelector(".calc-smeta-form").style.display = "none";
           })
           .catch(error => {
             window.console.log(error);
