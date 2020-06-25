@@ -83,10 +83,20 @@
           </p>
           <p class="calc-smeta-total my-0">{{ calculate }} <span>₽</span></p>
         </div>
-        <button v-show="!submitStatus" class="calc-smeta-reset" type="reset" @click="reset">
+        <button
+          v-show="!submitStatus"
+          class="calc-smeta-reset"
+          type="reset"
+          @click="reset"
+        >
           Сбросить
         </button>
-        <form v-show="!submitStatus" action="#" class="calc-smeta-form" @submit.prevent="submit">
+        <form
+          v-show="!submitStatus"
+          action="#"
+          class="calc-smeta-form"
+          @submit.prevent="submit"
+        >
           <h4 class="calc-smeta-form-header">Ваши данные</h4>
           <input
             :disabled="submitStatus"
