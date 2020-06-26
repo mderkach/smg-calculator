@@ -6,9 +6,9 @@
           <v-row>
             <v-col cols="12" xl="10" offset-xl="1" offset="0" class="py-0">
               <div class="calc-header-wrapper">
-                <a href="#" class="calc-header">
+                <h1 class="calc-header">
                   Калькулятор услуг
-                </a>
+                </h1>
                 <p v-show="progress === 1" class="calc-descr">
                   Калькулятор позволяет выяснить стоимость разработки сайта, не
                   обращаясь для этого к нашему менеджеру: 5 несложных шагов и вы
