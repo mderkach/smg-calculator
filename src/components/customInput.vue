@@ -189,6 +189,10 @@ export default {
     &.--checkbox {
       flex-basis: calc(33.3333% - 13px) !important;
 
+      @media #{map-get($display-breakpoints, 'sm-and-down')} {
+        flex-basis:100%!important;
+      }
+
       &:nth-child(3n) {
         margin-right: 0;
       }
