@@ -9,6 +9,7 @@
         class="calc-next"
         @click="decreaseProgress(progress)"
         :disabled="progress === 1"
+        v-scroll-to="'.calc-header-wrapper'"
       >
         Назад
       </button>
@@ -16,6 +17,7 @@
         class="calc-next"
         @click="increaseProgress(progress)"
         :disabled="siteType === 'landing' ? progress === 4 : progress === 6"
+        v-scroll-to="'.calc-header-wrapper'"
       >
         Далее
       </button>

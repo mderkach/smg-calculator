@@ -6,6 +6,7 @@
       :key="index"
       :class="index === steps.length - 1 ? 'active' : ''"
       @click="changeProgress(index + 1)"
+      v-scroll-to="'.calc-header-wrapper'"
     >
       <p class="calc-step-descr my-0">Шаг {{ item }}</p>
     </div>
